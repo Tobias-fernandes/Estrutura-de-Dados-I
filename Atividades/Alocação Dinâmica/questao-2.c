@@ -3,21 +3,19 @@
 #include <string.h>
 #include <unistd.h>
 
-//Função que irar determinar quantas questões a prova terar;
 void quantidade_questoes(int *quantidade)
 {
-    printf("Digite a quantidade de questões que terar na prova:\n");
+    printf("Insira a quantidade de questões que terar na prova:\n");
     scanf("%d",&*quantidade);
 }
 
-//Função que irar salvar as respostas do gabarito no progama;
 void gabarito_prova(int *quantidade, char ***gabarito)
 {
-    *gabarito = (char**)malloc((*quantidade) * sizeof(char*));//aloquei o espaço para a resposta de acordo com o tanto de questoes;
+    *gabarito = (char**)malloc((*quantidade) * sizeof(char*));
     for(int numero = 0; numero < *quantidade; numero++)
     { 
         printf("digite a resposta para a questão %d\n", numero + 1);
-        (*gabarito)[numero] = (char*)malloc(10 * sizeof(char));//Cada vez que ocorre o loop é alocado em cada vetor um espaço de 10 bytes ou cada resposta pode armazenar 10 letras;
+        (*gabarito)[numero] = (char*)malloc(10 * sizeof(char));
         scanf("%s",(*gabarito)[numero]);
     }
     system("clear");
@@ -27,14 +25,13 @@ void gabarito_prova(int *quantidade, char ***gabarito)
         printf("Resposta da questao %d = %s.\n ", numero + 1,(*gabarito)[numero]);
     }
     printf("aguarde 3 segundos.\n");
-    sleep(1);//Função para pausar o progama durante um periodo definido pelo usuario;
+    sleep(1);
     printf("aguarde 2 segundos.\n");
     sleep(1);
     printf("aguarde 1 segundos.\n");
     sleep(1);
 }
 
-//Função para mostrar a porcentagem de aprovação;
 void porcentagem_aprovados(int *valor_da_porcentagem, int *resultado)
 {
     int total = 0;
@@ -46,7 +43,7 @@ void porcentagem_aprovados(int *valor_da_porcentagem, int *resultado)
     
     printf("A porcentagem dos alunos aprovados foran de: %d por cento\n",*resultado);
 }
-//Estrutura para guardar o dado de cada aluno; 
+
 typedef struct aluno
 {
     char nome[21];
@@ -57,12 +54,11 @@ typedef struct aluno
 
 int main()
 {
-    // Primeira etapa, meta: definir a quantidade de questões e montar um gabarito - CONCLUIDA
    
-    int quantidade = 0;//criei uma variavel que irar guardar o valor de quantas questões terão na prova;
+    int quantidade = 0;
     
-    int aprovados = 0;//variavel criada para calcular a quantidade de pessoas aprovadas na sala;
-    int resultados = 0;//variavel criada para mostrar a porcentagens de aprovados;
+    int aprovados = 0;
+    int resultados = 0;
 
     int numero = 0;
     int ordem = 0; 
